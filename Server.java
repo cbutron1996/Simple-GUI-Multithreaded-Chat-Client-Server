@@ -198,11 +198,11 @@ class ChatBox extends JFrame {
         chat.setFont(font);
         chat.setEditable(false);
         chat.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        chat.setPreferredSize(chatDimension);
+        //chat.setPreferredSize(chatDimension);
 
         scroll = new JScrollPane(chat);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll.setBounds(0, 0, 350, 160);
+        scroll.setBounds(0, 0, 350, 1000);
         
         textBox.setFont(font);
         textBox.setEditable(true);

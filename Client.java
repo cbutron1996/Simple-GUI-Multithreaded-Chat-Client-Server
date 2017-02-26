@@ -11,12 +11,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 class Client {
 	
@@ -31,9 +26,11 @@ class Client {
 	    Dimension textBoxDimension = new Dimension(200, 40);
 	    Dimension sendDimension = new Dimension(90, 40);
 
-	    JTextArea chat = new JTextArea(1,20);
+	    JTextArea chat = new JTextArea(10,20);
 	    JTextField textBox = new JTextField(20);
 	    Font font = new Font("Times New Roman", Font.BOLD, 16);
+
+	    JScrollPane scroll = new JScrollPane(chat);
 	    
 	    PrintWriter pout = null;
 	    BufferedReader bin = null;
@@ -81,7 +78,11 @@ class Client {
 	        chat.setFont(font);
 	        chat.setEditable(false);
 	        chat.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-	        chat.setPreferredSize(chatDimension);
+	        //chat.setPreferredSize(chatDimension);
+
+			scroll = new JScrollPane(chat);
+			scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+			scroll.setBounds(0, 0, 350, 1000);
 	        
 	        textBox.setFont(font);
 	        textBox.setEditable(true);
@@ -90,7 +91,7 @@ class Client {
 	        
 	        sendButton.setPreferredSize(sendDimension);
 	        
-	        row[0].add(chat);
+	        row[0].add(scroll);
 	        add(row[0]);
 	        
 	        row[1].add(textBox);
