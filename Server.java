@@ -153,8 +153,9 @@ class ChatBox extends JFrame {
     Dimension textBoxDimension = new Dimension(200, 40);
     Dimension sendDimension = new Dimension(90, 40);
 
-    JTextArea chat = new JTextArea(1,20);
+    JTextArea chat;
     JTextField textBox = new JTextField(20);
+    JScrollPane scroll;
     Font font = new Font("Times New Roman", Font.BOLD, 16);
     
     String name = null;
@@ -192,11 +193,16 @@ class ChatBox extends JFrame {
         	public void keyReleased(KeyEvent e) { }
         	public void keyTyped(KeyEvent e) { }
         });
-        
+
+        chat = new JTextArea(10,20);
         chat.setFont(font);
         chat.setEditable(false);
         chat.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         chat.setPreferredSize(chatDimension);
+
+        scroll = new JScrollPane(chat);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setBounds(0, 0, 350, 160);
         
         textBox.setFont(font);
         textBox.setEditable(true);
@@ -205,7 +211,7 @@ class ChatBox extends JFrame {
         
         sendButton.setPreferredSize(sendDimension);
         
-        row[0].add(chat);
+        row[0].add(scroll);
         add(row[0]);
         
         row[1].add(textBox);
